@@ -7,7 +7,6 @@ import renderWithRouter from './renderWithRouter';
 
 test('Teste se a página contém um heading h2 com o texto Encountered pokémons;', () => {
   const DATA_POKEMONS = data;
-  const isPokemonFavoriteById = DATA_POKEMONS.filter(({ id }) => id);
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
@@ -19,7 +18,6 @@ test('Teste se a página contém um heading h2 com o texto Encountered pokémons
 
 test('Testando os botões de filtragem por tipo possuem o nome correto', () => {
   const DATA_POKEMONS = data;
-  const isPokemonFavoriteById = DATA_POKEMONS.filter(({ id }) => id);
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
@@ -43,7 +41,6 @@ test('Testando os botões de filtragem por tipo possuem o nome correto', () => {
 
 test('Teste os botao com data-testid', () => {
   const DATA_POKEMONS = data;
-  const isPokemonFavoriteById = DATA_POKEMONS.filter(({ id }) => id);
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
