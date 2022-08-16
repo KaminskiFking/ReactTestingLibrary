@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 import renderWithRouter from './renderWithRouter';
 import Pokemon from '../components/Pokemon';
 
-const DATA_POKEMONS = {
+const DATA_POKEMON = {
   id: 25,
   name: 'Pikachu',
   type: 'Electric',
@@ -26,7 +26,7 @@ const DATA_POKEMONS = {
 };
 
 test('Testes da Imagem do Pokemon', () => {
-  renderWithRouter(<Pokemon pokemon={ DATA_POKEMONS } isFavorite={ { 25: false } } />);
+  renderWithRouter(<Pokemon pokemon={ DATA_POKEMON } isFavorite={ { 25: false } } />);
   const getImage = screen
     .getByAltText('Pikachu sprite');
   const getImageFavorite = screen
@@ -38,7 +38,7 @@ test('Testes da Imagem do Pokemon', () => {
 });
 
 test('Testes de Texto do Pokemon', () => {
-  renderWithRouter(<Pokemon pokemon={ DATA_POKEMONS } isFavorite={ { 25: false } } />);
+  renderWithRouter(<Pokemon pokemon={ DATA_POKEMON } isFavorite={ { 25: false } } />);
   const getText = screen.getByText('Electric');
   const getLink = screen.getByRole('link', { name: 'More details' });
   expect(getLink.href).toContain('pokemons/25');
