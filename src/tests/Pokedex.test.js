@@ -2,11 +2,11 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Pokedex from '../pages/Pokedex';
-import data from '../data';
+import pokemons from '../data';
 import renderWithRouter from './renderWithRouter';
 
 test('Teste se a página contém um heading h2 com o texto Encountered pokémons;', () => {
-  const DATA_POKEMONS = data;
+  const DATA_POKEMONS = pokemons;
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
@@ -17,7 +17,7 @@ test('Teste se a página contém um heading h2 com o texto Encountered pokémons
 });
 
 test('Testando os botões de filtragem por tipo possuem o nome correto', () => {
-  const DATA_POKEMONS = data;
+  const DATA_POKEMONS = pokemons;
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
@@ -39,27 +39,27 @@ test('Testando os botões de filtragem por tipo possuem o nome correto', () => {
   expect(buttonDragon).toBeDefined();
 });
 
-test('Teste os botao com data-testid', () => {
-  const DATA_POKEMONS = data;
+test('Test buttons with correct data-testid', () => {
+  const DATA_POKEMONS = pokemons;
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
   />);
 
-  const buttonId = screen.getAllByTestId('pokemon-type-button');
-  const lengthButton = buttonId.length;
-  expect(buttonId).toHaveLength(lengthButton);
+  const buttonContainIdTest = screen.getAllByTestId('pokemon-type-button');
+  const maxLengthButton = buttonContainIdTest.length;
+  expect(buttonContainIdTest).toHaveLength(maxLengthButton);
 });
 
-test('Teste se é possivel clicar no botao All', () => {
-  const DATA_POKEMONS = data;
+test('Test if it is possible to click on the All button', () => {
+  const DATA_POKEMONS = pokemons;
   renderWithRouter(<Pokedex
     pokemons={ DATA_POKEMONS }
     isPokemonFavoriteById={ { 25: false } }
   />);
 
-  const buttonAll = screen.getByRole('button', { name: 'All' });
-  userEvent.click(buttonAll);
-  const pikachu = screen.getByText('Pikachu');
-  expect(pikachu).toBeInTheDocument();
+  const buttonAllClick = screen.getByRole('button', { name: 'All' });
+  userEvent.click(buttonAllClick);
+  const pikachuText = screen.getByText('Pikachu');
+  expect(pikachuText).toBeInTheDocument();
 });

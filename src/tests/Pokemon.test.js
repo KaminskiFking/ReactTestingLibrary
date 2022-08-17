@@ -27,12 +27,12 @@ const DATA_POKEMON = {
 
 test('Testes da Imagem do Pokemon', () => {
   renderWithRouter(<Pokemon pokemon={ DATA_POKEMON } isFavorite={ { 25: false } } />);
-  const getImage = screen
+  const getImageSprite = screen
     .getByAltText('Pikachu sprite');
   const getImageFavorite = screen
     .getByAltText('Pikachu is marked as favorite');
-  expect(getImage.alt).toContain('Pikachu sprite');
-  expect(getImage.src).toContain('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
+  expect(getImageSprite.alt).toContain('Pikachu sprite');
+  expect(getImageSprite.src).toContain('https://cdn2.bulbagarden.net/upload/b/b2/Spr_5b_025_m.png');
   expect(getImageFavorite.src).toContain('http://localhost/star-icon.svg');
   expect(getImageFavorite.alt).toContain('Pikachu is marked as favorite');
 });

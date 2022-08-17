@@ -5,6 +5,6 @@ import FavoritePokemons from '../pages/FavoritePokemons';
 
 test('Teste se é exibida na tela a mensagem No favorite pokemon found', () => {
   renderWithRouter(<FavoritePokemons />);
-  const textFavoritePokemons = screen.getByText('No favorite pokemon found');
-  expect(textFavoritePokemons).toBeInTheDocument();
+  const textNoFavorite = screen.getByText('No favorite pokemon found');
+  expect(textNoFavorite).toBeInTheDocument();
 });

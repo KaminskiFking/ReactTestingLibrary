@@ -5,7 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import App from '../App';
 import NotFound from '../pages/NotFound';
 
-test('Testando os Links App.js', () => {
+test('Testing the Links are on screen', () => {
   renderWithRouter(<App />);
 
   const homeLink = screen.getByRole('link', { name: 'Home' });
@@ -16,7 +16,7 @@ test('Testando os Links App.js', () => {
   expect(pokemonsLink).toBeInTheDocument();
 });
 
-test('Testando Redirecionamento do Home App.js', () => {
+test('Testing Home Redirection', () => {
   const { history } = renderWithRouter(<App />);
   const homeLinkClick = screen.getByRole('link', { name: 'Home' });
   userEvent.click(homeLinkClick);
@@ -24,7 +24,7 @@ test('Testando Redirecionamento do Home App.js', () => {
   expect(pathname).toBe('/');
 });
 
-test('Testando Redirecionamento do About App.js', () => {
+test('Testing About Redirection', () => {
   const { history } = renderWithRouter(<App />);
   const aboutLinkClick = screen.getByRole('link', { name: 'About' });
   userEvent.click(aboutLinkClick);
@@ -32,7 +32,7 @@ test('Testando Redirecionamento do About App.js', () => {
   expect(pathname).toBe('/about');
 });
 
-test('Testando Redirecionamento do Favorites App.js', () => {
+test('Testing Favorites Redirection', () => {
   const { history } = renderWithRouter(<App />);
   const favoriteLinkClick = screen.getByRole('link', { name: 'Favorite Pokémons' });
   userEvent.click(favoriteLinkClick);
@@ -40,9 +40,9 @@ test('Testando Redirecionamento do Favorites App.js', () => {
   expect(pathname).toBe('/favorites');
 });
 
-test('Testando Redirecionamento do NotFound App.js', () => {
+test('Testing NotFound Redirection', () => {
   const { history } = renderWithRouter(<NotFound />);
   history.push('/que-nao-existe');
-  const notFoundPatch = screen.getByText('Page requested not found');
-  expect(notFoundPatch).toBeInTheDocument();
+  const notFoundText = screen.getByText('Page requested not found');
+  expect(notFoundText).toBeInTheDocument();
 });
